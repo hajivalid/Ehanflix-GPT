@@ -1,11 +1,7 @@
-import './App.css';
+import Body from "./components/Body";
 
 function App() {
-  return (
-    <div className="text-green-800 font-extrabold text-lg">
-      <h1>EHANFLIX-GPT</h1>
-    </div>
-  );
+  return <Body/>;
 }
 
 export default App;

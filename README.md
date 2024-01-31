@@ -1,6 +1,9 @@
 # Ehanflix GPT
 - create React App
 - configured TailwindCSS
+- Header
+- Login Form
+- sign up Form
 
 
 # Features:
