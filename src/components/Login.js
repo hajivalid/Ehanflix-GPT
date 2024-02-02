@@ -7,14 +7,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/userSlice";
+import { BACKGROUND_IMG } from "../utils/constants";
 
 const Login = () => {
   const [isLogInToggle, setIsLogInToggle] = useState(false);
   const [errMessage, setErrMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const nameRef = useRef(null);
@@ -29,11 +28,11 @@ const Login = () => {
     };
 
     if (
-      (userInfo.email != "" &&
-        userInfo.password != "" &&
+      (userInfo.email !== "" &&
+        userInfo.password !== "" &&
         isLogInToggle &&
-        userInfo.name != "") ||
-      (userInfo.email != "" && userInfo.password != "" && !isLogInToggle)
+        userInfo.name !== "") ||
+      (userInfo.email !== "" && userInfo.password !== "" && !isLogInToggle)
     ) {
       const error = inputValidation(userInfo.email, userInfo.password);
       setErrMessage(error);
@@ -68,7 +67,6 @@ const Login = () => {
             dispatch(
               addUser({ displayName: displayName, email: email, uid: uid })
             );
-            navigate("/browse");
           })
           .catch((error) => {
             console.error(error);
@@ -83,13 +81,10 @@ const Login = () => {
 
   //Sign In
   const userSignIn = (props) => {
-    const { name, email, password } = props;
+    const { email, password } = props;
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        navigate("/browse");
-      })
+      .then(() => {})
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -103,7 +98,7 @@ const Login = () => {
       <div>
         <img
           className="h-[100vh] w-full"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/4da5d2b1-1b22-498d-90c0-4d86701dffcc/98a1cb1e-5a1d-4b98-a46f-995272b632dd/IN-en-20240129-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+          src={BACKGROUND_IMG}
           alt="backgroundImg"
         />
       </div>
@@ -137,7 +132,7 @@ const Login = () => {
             className="w-full p-3 mb-5 border bg-transparent text-white border-gray-400 rounded-sm"
             type="text"
             required
-            placeholder="Email or phone number"
+            placeholder="Email Address"
           />
           <input
             ref={passwordRef}
@@ -158,14 +153,14 @@ const Login = () => {
               Forgot password?
             </div>
           )}
-          <div className="text-gray-400 text-center text-[16px] mt-6 mb-4">
+          <div className="text-gray-400 text-center text-[16px] mt-6 mb-4 flex justify-center">
             {isLogInToggle ? "Already on Ehanflix? " : "New to Ehanflix? "}
-            <a
-              className=" text-[16px] text-white hover:underline cursor-pointer"
+            <div
+              className=" text-[16px] text-white hover:underline cursor-pointer ml-1"
               onClick={loginToggleHandler}
             >
               {isLogInToggle ? "Sign In Now" : "Sign Up Now"}
-            </a>
+            </div>
           </div>
         </form>
       </div>
