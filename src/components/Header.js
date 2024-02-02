@@ -39,17 +39,17 @@ const Header = () => {
   return (
     <div className="absolute px-8 bg-gradient-to-b from-black w-full">
       <div className="flex justify-between items-center">
-        <img className="w-[200px] p-3" src={logo} alt="logo" />
+        <img className="w-[200px] p-3 z-10" src={logo} alt="logo" />
         {user && (
           <div className="flex items-center">
             <FontAwesomeIcon
               className="text-[26px] text-[#ff0000] font-extrabold px-2"
               icon={faUser}
             />
-            <h3 className="pr-3 font-extrabold text-[20px]">
+            <h3 className="pr-3 text-white font-extrabold text-[20px]">
               {user.displayName}
             </h3>
-            <button className="" onClick={signOutHandler}>
+            <button className="z-10" onClick={signOutHandler}>
               <FontAwesomeIcon
                 className="text-[26px] text-[#ff0000] font-extrabold px-2 hover:text-red-600"
                 icon={faSignOutAlt}
