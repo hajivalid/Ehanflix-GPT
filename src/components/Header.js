@@ -7,6 +7,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/redux/userSlice";
+import { removeMovies } from "../utils/redux/movieSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Header = () => {
         navigate("/browse");
       } else {
         dispatch(removeUser());
+        dispatch(removeMovies());
         navigate("/");
       }
     });

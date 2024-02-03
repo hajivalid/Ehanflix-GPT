@@ -30,6 +30,22 @@
 - Fetch data for trailer video
 - Update store with trailer video data
 - Embedded the youtube video and make it auto play and mute
+- Build movie Genres container
+- Build movie Genres list
+    - Now Playing movies
+    - Popular movies
+    - Top rated movies
+    - Up coming movies
+- Build movie cards
+- TMDB image CDN url
+- created custom hooks for fetching data
+    - Main Trailer video
+    - Now Playing movies
+    - Popular movies
+    - Top rated movies
+    - Up coming movies
+- when we are logOut clearing store data
+- 
 
 
 

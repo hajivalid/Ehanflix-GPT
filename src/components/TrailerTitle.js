@@ -5,11 +5,11 @@ import { faPlay, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 export const TrailerTitle = ({ title, overView }) => {
   
   return (
-    <div className="pt-[18%] pl-[50px] text-white absolute bg-gradient-to-r from-black w-full h-full">
-      <h1 className="text-[40px] font-extrabold ">
+    <div className="pt-[16%] pl-[50px] text-white absolute bg-gradient-to-r h-full">
+      <h1 className="text-[40px] font-extrabold drop-shadow-2xl">
         {title}
       </h1>
-      <p className="py-4 text-[16px] w-1/3">{overView}</p>
+      <p className="py-4 text-[16px] w-1/3 drop-shadow-2xl">{overView}</p>
       <div className="flex items-center text-[18px]">
         <button className="py-3 px-8 text-black font-bold bg-white rounded-md hover:opacity-80">
           <FontAwesomeIcon icon={faPlay} />
