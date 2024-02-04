@@ -8,6 +8,7 @@ import useUpComingMovies from "../customHooks/useUpComingMovies";
 import useTopRatedMovies from "../customHooks/useTopRatedMovies";
 import GPTSearch from "./GPT-Search";
 import { useSelector } from "react-redux";
+import GPTSuggestions from "./GPT-Suggestions";
 
 const Browse = () => {
   const searchToggle = useSelector((store) => store.search.searchToggle);

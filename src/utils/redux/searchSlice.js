@@ -4,10 +4,17 @@ const searchSlice = createSlice({
     name: 'search',
     initialState: {
         searchToggle: false,
+        movieNames: null,
+        movieResults: null
     },
     reducers: {
         toggleSearch: (state) => {
             state.searchToggle =!state.searchToggle;
+        },
+        addGPTMovieResults: (state, action) => {
+            const {movieNames, movieResults} = action.payload;
+            state.movieNames = movieNames;
+            state.movieResults = movieResults;
         },
         defaultSearchToggle: (state) => {
             state.searchToggle = false;
@@ -15,5 +22,5 @@ const searchSlice = createSlice({
     }
 });
 
-export const {toggleSearch, defaultSearchToggle} = searchSlice.actions;
+export const {toggleSearch, addGPTMovieResults, defaultSearchToggle} = searchSlice.actions;
 export default searchSlice.reducer

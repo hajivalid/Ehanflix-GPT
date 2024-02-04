@@ -54,7 +54,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute px-8 bg-gradient-to-b from-black w-full">
+    <div className="fixed px-8 bg-gradient-to-b from-black w-full z-30">
       <div className="flex justify-between items-center">
         <img className="w-[200px] p-3 z-10" src={logo} alt="logo" />
         {user && (
@@ -79,7 +79,7 @@ const Header = () => {
               </h3>
             </div>
             <button
-              className="text-[#ff0000] font-extrabold bg-[rgba(0,0,0,0.3)] px-2 py-[11px] rounded-md z-10 flex hover:text-white"
+              className="text-[#ff0000] font-extrabold bg-[rgba(0,0,0,0.3)] px-2 py-[11px] rounded-md z-10 flex hover:text-white mr-5"
               onClick={signOutHandler}
             >
               <FontAwesomeIcon
