@@ -7,7 +7,6 @@ function MovieGenres() {
   if(!movies) return;
   const { nowPlayingMovies, popularMovies, topRatedMovies, upComingMovies } = movies;
 
-  console.log(nowPlayingMovies);
   return (
     <div className="bg-black z-20">
       <div className="bg-transparent relative -mt-[250px]">

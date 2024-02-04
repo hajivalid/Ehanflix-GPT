@@ -45,8 +45,10 @@
     - Top rated movies
     - Up coming movies
 - when we are logOut clearing store data
-- 
-
+- GPT search feature in browse page
+- GPT search bar UI
+- Multi language feature in GPT page
+-
 
 
 
