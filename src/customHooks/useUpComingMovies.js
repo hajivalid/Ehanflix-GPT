@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { API_OPTIONS, UP_COMING_API } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUpcomingMovies } from "../utils/redux/movieSlice";
 
 const useUpComingMovies = () => {
   const dispatch = useDispatch();
+  const upComingResults = useSelector((store) => store.upComingMovies);
 
   useEffect(() => {
-    fetchUpComingMovies();
+    !upComingResults && fetchUpComingMovies(); // Memoization
   }, []);
 
   //Fetching Top rated Movies from TMDB and updating list into store

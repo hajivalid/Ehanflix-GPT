@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { API_OPTIONS, TOP_RATED_API } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTopRatedMovies } from "../utils/redux/movieSlice";
 
 const useTopRatedMovies = () => {
   const dispatch = useDispatch();
+  const topRatedResults = useSelector((store) => store.topRatedMovies);
 
   useEffect(() => {
-    fetchTopRatedMovies();
+    !topRatedResults && fetchTopRatedMovies(); //Memoization
   }, []);
 
   //Fetching Top rated Movies from TMDB and updating list into store

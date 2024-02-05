@@ -48,8 +48,11 @@
 - GPT search feature in browse page
 - GPT search bar UI
 - Multi language feature in GPT page
--
-
+- GPT suggestion movie cards
+- OpenAI installation and configuration
+- Added .env file for secret key's
+- Implemented Memoization for fetch calls
+- 
 
 
 # Features:

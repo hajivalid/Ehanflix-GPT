@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { API_OPTIONS, NOW_PLAYING_API } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNowPlayingMovies } from "../utils/redux/movieSlice";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
+  const nowPlayingResults = useSelector((store) => store.nowPlayingMovies);
 
   useEffect(() => {
-    fetchNowPlayingMovies();
+    !nowPlayingResults && fetchNowPlayingMovies(); // Memoization
   }, []);
 
   //Fetching Now Playing Movies from TMDB and updating list into store

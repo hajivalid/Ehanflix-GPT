@@ -7,11 +7,9 @@ const GPTSuggestions = () => {
   const {movieNames, movieResults} = gptResults;
 
   if (!movieNames && !movieResults) return;
-  console.log('name', movieNames);
-  console.log('list', movieResults);
 
   return (
-    <div className="">
+    <div className="mt-5">
       <div className="">
         {movieNames.map((movie, index) => <MovieLists key={movie} title={movie} movies={movieResults[index]} />)}
       </div>
