@@ -21,6 +21,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const searchToggle = useSelector((store) => store.search.searchToggle);
+  const togglePosition = (searchToggle)? "bottom-[0px] md:top-0 right-8 md:right-0" : "top-[186px] md:top-0 right-6 md:right-0";
 
   const toggleSearchHandler = () => {
     dispatch(toggleSearch());
@@ -54,32 +55,32 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="fixed px-8 bg-gradient-to-b from-black w-full z-30">
+    <div className="fixed px-4 md:px-8 pt-3 md:pt-0 bg-gradient-to-b from-black w-full z-30">
       <div className="flex justify-between items-center">
-        <img className="w-[200px] p-3 z-10" src={logo} alt="logo" />
+        <img className="w-[150px] sm-[180px] md:w-[200px] p-3 z-10" src={logo} alt="logo" />
         {user && (
           <div className="flex items-center">
             <button
               onClick={toggleSearchHandler}
-              className="text-[#ff0000] font-extrabold text-[18px] bg-[rgba(0,0,0,0.3)] p-2 rounded-md z-10 hover:text-white"
+              className={`text-[#ff0000] font-extrabold text-[16px] md:text-[18px] bg-[rgba(0,0,0,0.3)] p-2 rounded-md z-10 hover:text-white`}
             >
-              {!searchToggle && <span className="pr-2">GPT</span>}
+              {!searchToggle && <span className="pr-1 md:pr-2">GPT</span>}
               <FontAwesomeIcon
-                className="text-[18px] font-extrabold px-1"
+                className="text-[16px] md:text-[18px] font-extrabold px-1"
                 icon={!searchToggle ? faSearch : faHome}
               />
             </button>
-            <div className="flex items-center bg-[rgba(0,0,0,0.3)] p-2 mx-2 rounded-md z-10">
+            <div className="block text-center md:flex  bg-[rgba(0,0,0,0.3)] p-2 mx-2 rounded-md z-10">
               <FontAwesomeIcon
-                className="text-[22px] text-[#ff0000] font-extrabold pr-2"
+                className="text-[16px] md:text-[22px] text-[#ff0000] font-extrabold pr-0 md:pr-2"
                 icon={faUser}
               />
-              <h3 className="text-gray-400 font-extrabold text-[18px]">
+              <h3 className="text-gray-400 font-extrabold text-[12px] md:text-[18px]">
                 {user.displayName}
               </h3>
             </div>
             <button
-              className="text-[#ff0000] font-extrabold bg-[rgba(0,0,0,0.3)] px-2 py-[11px] rounded-md z-10 flex hover:text-white mr-5"
+              className="text-[#ff0000] font-extrabold bg-[rgba(0,0,0,0.3)] px-2 py-[11px] rounded-md z-10 flex hover:text-white mr-0 md:mr-5"
               onClick={signOutHandler}
             >
               <FontAwesomeIcon

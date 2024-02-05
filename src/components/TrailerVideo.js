@@ -7,7 +7,7 @@ const TrailerVideo = ({ movieId }) => {
   useTrailerVideo(movieId);
 
   return (
-    <div>
+    <div className="pt-[100px] md:pt-0 bg-black md:bg-none">
       <iframe
         className="w-full aspect-video"
         src={"https://www.youtube.com/embed/" + trailerVideo?.key + "?autoplay=1&mute=1"}

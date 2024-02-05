@@ -16,14 +16,14 @@ const GPTSearch = () => {
     <div>
       <div className="bg-gradient-to-b from-black fixed w-full">
         <img
-          className="h-[100vh] w-full opacity-30"
+          className="h-[100vh] w-full object-cover opacity-30"
           src={BACKGROUND_IMG}
           alt="backgroundImg"
         />
       </div>
       <select
         onChange={langChangeHandler}
-        className="fixed right-9 bottom-[5%] bg-[rgba(0,0,0,0.7)] p-2 border-none outline-none font-bold text-gray-400 rounded-md z-20"
+        className="fixed right-9 bottom-[5%] bg-[rgba(0,0,0,0.7)] p-2 border-none outline-none text-[12px] md:text-[14px] font-bold text-gray-400 rounded-md z-20"
       >
         {SUPPORTED_LANGUAGES?.map((lang) => (
           <option key={lang.code} value={lang.code}>
@@ -31,7 +31,7 @@ const GPTSearch = () => {
           </option>
         ))}
       </select>
-      <div className="absolute top-[22%] w-full">
+      <div className="absolute top-[16%] md:top-[22%] w-full">
         <GPTSearchBar />
         <GPTSuggestions/>
       </div>

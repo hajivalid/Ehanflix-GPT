@@ -97,18 +97,18 @@ const Login = () => {
       <Header />
       <div>
         <img
-          className="h-[100vh] w-full"
+          className="h-[100vh] w-full object-cover"
           src={BACKGROUND_IMG}
           alt="backgroundImg"
         />
       </div>
-      <div className="absolute top-[50%] left-[50%] bg-[rgba(0,0,0,0.7)] w-[28%] px-16 py-8 translate-x-[-50%] translate-y-[-50%] rounded-sm">
+      <div className="absolute top-[50%] left-[50%] bg-[rgba(0,0,0,0.7)] w-[80%] sm:w-[60%] md:w-[28%] px-5 sm:px-8 md:px-16 py-5 md:py-8 translate-x-[-50%] translate-y-[-50%] rounded-sm">
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
         >
-          <h1 className="text-[34px] font-bold text-white mb-5">
+          <h1 className="text-[24px] md:text-[34px] font-bold text-white mb-5">
             {isLogInToggle ? "Sign Up" : "Sign In"}
           </h1>
 

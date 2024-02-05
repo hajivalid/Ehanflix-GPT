@@ -9,7 +9,7 @@ function MovieGenres() {
 
   return (
     <div className="bg-black z-20">
-      <div className="bg-transparent relative -mt-[250px]">
+      <div className="bg-transparent relative mt-[0px] md:-mt-[250px]">
         <MovieLists title={"Now Playing"} movies={nowPlayingMovies} />
         <MovieLists title={"Popular"} movies={popularMovies} />
         <MovieLists title={"Top Rated"} movies={topRatedMovies} />

@@ -52,7 +52,7 @@
 - OpenAI installation and configuration
 - Added .env file for secret key's
 - Implemented Memoization for fetch calls
-- 
+- Implemented Responsive UI on Tailwind css
 
 
 # Features:
