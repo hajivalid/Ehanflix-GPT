@@ -11,14 +11,18 @@ const GPTSearchBar = () => {
   const identifier = useSelector((store) => store.config.lang);
 
   const searchMovieTMDB = async (movie) => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/search/movie?query=" +
-        movie +
-        "&include_adult=false&language=en-US&page=1",
-      API_OPTIONS
-    );
-    const json = await data.json();
-    return json.results;
+    try{
+      const data = await fetch(
+        "https://api.themoviedb.org/3/search/movie?query=" +
+          movie +
+          "&include_adult=false&language=en-US&page=1",
+        API_OPTIONS
+      );
+      const json = await data.json();
+      return json.results;
+    }catch(error){
+      console.error("Error fetching search Movies:", error)
+    }
   };
 
   const searchHandler = async () => {

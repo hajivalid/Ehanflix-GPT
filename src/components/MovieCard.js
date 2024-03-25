@@ -10,8 +10,7 @@ import {
 export const MovieCard = ({ movieData }) => {
   const [showModal, setShowModal] = useState(false);
   const [trailerInfo, setTrailerInfo] = useState(null);
-console.log(trailerInfo);
-
+console.log(movieData);
   const trailerDetailsHandler = async () => {
     setShowModal(true);
     if (movieData?.id) {

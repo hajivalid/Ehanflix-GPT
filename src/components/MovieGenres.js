@@ -8,7 +8,7 @@ function MovieGenres() {
   const { nowPlayingMovies, popularMovies, topRatedMovies, upComingMovies } = movies;
 
   return (
-    <div className="bg-black z-20">
+    <div className="bg-black z-20 pb-5">
       <div className="bg-transparent relative mt-[0px] md:-mt-[250px]">
         <MovieLists title={"Now Playing"} movies={nowPlayingMovies} />
         <MovieLists title={"Popular"} movies={popularMovies} />
