@@ -13,9 +13,17 @@ const useNowPlayingMovies = () => {
 
   //Fetching Now Playing Movies from TMDB and updating list into store
   const fetchNowPlayingMovies = async () => {
-    const data = await fetch(NOW_PLAYING_API, API_OPTIONS);
-    const json = await data.json();
-    dispatch(addNowPlayingMovies(json.results));
+    //console.log(NOW_PLAYING_API);
+    //console.log(API_OPTIONS);
+    try {
+      const data = await fetch(NOW_PLAYING_API, API_OPTIONS);
+
+      const json = await data.json();
+
+      dispatch(addNowPlayingMovies(json.results));
+    } catch (error) {
+      console.error("Error fetching Now Playing Movies:", error);
+    }
   };
 };
 export default useNowPlayingMovies;

@@ -13,9 +13,13 @@ const usePopularMovies = () => {
 
   //Fetching Popular Movies from TMDB and updating list into store
   const fetchPopularMovies = async () => {
-    const data = await fetch(POPULAR_API, API_OPTIONS);
-    const json = await data.json();
-    dispatch(addPopularMovies(json.results));
+    try{
+      const data = await fetch(POPULAR_API, API_OPTIONS);
+      const json = await data.json();
+      dispatch(addPopularMovies(json.results));
+    }catch (error) {
+      console.error("Error fetching Popular Movies:", error);
+    }
   };
 };
 export default usePopularMovies;

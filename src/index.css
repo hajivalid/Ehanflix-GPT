@@ -10,10 +10,63 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*{box-sizing: border-box;}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.ReactModal__Body--open{
+  overflow: hidden;
+}
+.ReactModalPortal .ReactModal__Overlay{
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(0,0,0,0.8) !important;
+}
+.ReactModalPortal .ReactModal__Content{
+  width:50%;
+  height: 80%;
+  inset: unset !important;
+  color: white;
+  position: relative !important;
+  background-color: rgba(0,0,0,0.7) !important;
+  border: 1px solid grey !important;
+  margin-top: 5%;
+  padding:0px !important;
+}
+
+.shimmerBG {
+  height: 73%;
+  animation-duration: 2.2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  background: #ddd;
+  background: linear-gradient(to right, #090909 8%, #310202 18%, #030303 33%);
+  background-size: 1200px 100%;
+}
+
+
+@-webkit-keyframes shimmer {
+  0% {
+      background-position: -100% 0;
+  }
+  100% {
+      background-position: 100% 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+      background-position: -1200px 0;
+  }
+  100% {
+      background-position: 1200px 0;
+  }
 }
 
 @layer utilities {

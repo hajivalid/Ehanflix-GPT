@@ -55,7 +55,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="fixed px-4 md:px-8 pt-3 md:pt-0 bg-gradient-to-b from-black w-full z-30">
+    <div className="fixed px-4 md:px-8 pt-3 md:pt-0 bg-gradient-to-b from-black w-full z-20">
       <div className="flex justify-between items-center">
         <img className="w-[150px] sm-[180px] md:w-[200px] p-3 z-10" src={logo} alt="logo" />
         {user && (

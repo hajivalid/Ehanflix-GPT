@@ -13,9 +13,14 @@ const useUpComingMovies = () => {
 
   //Fetching Top rated Movies from TMDB and updating list into store
   const fetchUpComingMovies = async () => {
-    const data = await fetch(UP_COMING_API, API_OPTIONS);
-    const json = await data.json();
-    dispatch(addUpcomingMovies(json.results));
+    try{
+      const data = await fetch(UP_COMING_API, API_OPTIONS);
+      const json = await data.json();
+      dispatch(addUpcomingMovies(json.results));
+    }catch(error){
+      console.error("Error fetching Top rated Movies:", error);
+    }
+    
   };
 };
 export default useUpComingMovies;

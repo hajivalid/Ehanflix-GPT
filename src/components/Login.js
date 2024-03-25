@@ -10,9 +10,12 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/userSlice";
 import { BACKGROUND_IMG } from "../utils/constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [isLogInToggle, setIsLogInToggle] = useState(false);
+  const [isPasswordToggle, setIsPasswordToggle] = useState(false);
   const [errMessage, setErrMessage] = useState(null);
   const dispatch = useDispatch();
 
@@ -48,9 +51,18 @@ const Login = () => {
     }
   };
 
+  const inputChangeHandler = () =>{
+    setErrMessage(null);
+  }
+
   const loginToggleHandler = () => {
     setIsLogInToggle(!isLogInToggle);
+    setErrMessage(null);
+    setIsPasswordToggle(null);
   };
+  const passwordToggle = () => {
+    setIsPasswordToggle(!isPasswordToggle);
+  }
 
   // Sign Up
   const createUser = (props) => {
@@ -74,8 +86,10 @@ const Login = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrMessage(errorCode + ": " + errorMessage);
+        let errorMessage = error.message;
+        if(errorCode.includes('email-already-in-use'))
+          errorMessage = 'This email address is already associated with us. Please Sign In';
+        setErrMessage(errorMessage);
       });
   };
 
@@ -86,9 +100,13 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {})
       .catch((error) => {
+        console.log(error);
         const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrMessage(errorCode + ": " + errorMessage);
+        let errorMessage = error.message;
+        if(errorCode.includes('invalid-credential'))
+          errorMessage = ' Invalid User ID / Password Combination Entered. Please Correct and Reenter. / Are you new to Ehanflix? Kindly Register Right Away';
+        
+        setErrMessage(errorMessage);
       });
   };
 
@@ -111,7 +129,7 @@ const Login = () => {
           <h1 className="text-[24px] md:text-[34px] font-bold text-white mb-5">
             {isLogInToggle ? "Sign Up" : "Sign In"}
           </h1>
-
+          <SampleDev></SampleDev>
           {errMessage && (
             <div className="p-3 text-[#ff0000] border border-[#ff0000] bg-red-950 mb-5 text-[14px] rounded-sm">
               {errMessage}
@@ -125,6 +143,7 @@ const Login = () => {
               type="text"
               required
               placeholder="Full name"
+              onChange={inputChangeHandler}
             />
           )}
           <input
@@ -133,14 +152,24 @@ const Login = () => {
             type="text"
             required
             placeholder="Email Address"
+            onChange={inputChangeHandler}
           />
+          <div className="relative">
           <input
             ref={passwordRef}
             className="w-full p-3 mb-5 border bg-transparent text-white border-gray-400 rounded-sm"
-            type="password"
+            type={isPasswordToggle ? 'text': 'password'}
             required
             placeholder="Password"
+            onChange={inputChangeHandler}
           />
+          <FontAwesomeIcon
+                onClick={passwordToggle}
+                className="absolute right-3 top-[18px] text-[12px] text-gray-400 font-extrabold hover:text-[#ff0000] pr-0 cursor-pointer"
+                icon={isPasswordToggle ? faEye : faEyeSlash}
+              />
+          </div>
+          
           <button
             className="p-2 bg-[#ff0000] mb-5 text-[16px] font-bold text-white rounded-sm w-full hover:bg-red-600"
             type="submit"
@@ -166,6 +195,12 @@ const Login = () => {
       </div>
     </div>
   );
+};
+
+const SampleDev = () =>{
+  return (
+    <div><h1>Sample Dev</h1></div>
+  )
 };
 
 export default Login;
